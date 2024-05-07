@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TalTech Canteens</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Canteens</h1>
+    <a href="{{ url_for('canteens_by_open_time', time='09:00') }}">Canteens Open at ...</a><br>
+    <a href="{{ url_for('add_canteen') }}">Add New Canteen</a><br>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Opening Time</th>
+            <th>Closing Time</th>
+        </tr>
+        {% for canteen in canteens %}
+        <tr>
+            <td>{{ canteen.name }}</td>
+            <td>{{ canteen.location }}</td>
+            <td>{{ canteen.time_open }}</td>
+            <td>{{ canteen.time_closed }}</td>
+            <td>
+                <form class="buttons" action="{{ url_for('validate_canteen', canteen_id=canteen.id) }}" method="GET">
+                    <button type="submit" class="action-button delete-button">Delete</button>
+                </form>
+                <form class="buttons" action="{{ url_for('update_canteen', canteen_id=canteen.id) }}" method="GET">
+                    <button type="submit" class="action-button update-button">Update</button>
+                </form>
+            </td>
+
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+</body>
+</html>

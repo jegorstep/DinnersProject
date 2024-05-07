@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Canteen</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Delete Canteen</h1>
+    <p>Are you sure you want to delete canteen "{{ canteen.name }}"?</p>
+    <form style="background-color: #dddddd" action="/canteens/delete/{{ canteen_id }}" method="GET">
+        <input type="submit" value="Delete">
+    </form>
+    <a rel="Back" href="{{ url_for('show_canteens') }}">Go Back</a>
+</body>
+</html>

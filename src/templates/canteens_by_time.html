@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canteens Open at {{ time }}</title>
+     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Canteens Open at {{ time }}</h1>
+     <form style="background-color: #dddddd" action="{{ url_for('canteens_by_open_time', time=value) }}" method="GET">
+        <label for="time">Select Open Time:</label>
+        <select name="time" id="time">
+            <option value="">--Select--</option>
+            {% for hour in range(6, 23) %}
+                {% set hour_str = "%02d" % hour %}
+                <option value="{{ hour_str }}:00">{{ hour_str }}:00</option>
+                <option value="{{ hour_str }}:30">{{ hour_str }}:30</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Find</button>
+    </form>
+    <table>
+    {% for canteen in canteens %}
+            <tr>
+                <td>{{ canteen.name }}</td>
+                <td>{{ canteen.location }}</td>
+                <td>{{canteen.time_open}}</td>
+                <td>{{canteen.time_closed}}</td>
+            </tr>
+    {% endfor %}
+    </table>
+    <a rel="Back" href="{{ url_for('show_canteens') }}">Go Back</a>
+</body>
+</html>

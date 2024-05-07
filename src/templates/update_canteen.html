@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Canteen</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Update Canteen</h1>
+    <form action="{{ url_for('post_update_canteens') }}" method="post">
+        <label for="name">Name:</label>
+        <br>
+        <input type="hidden" id="id" name="id" value="{{ canteen.id }}">
+        <input type="text" id="name" name="name" value="{{ canteen.name }}">
+        <br>
+        <label for="location">Location:</label>
+        <br>
+        <input type="text" id="location" name="location" value="{{ canteen.location }}">
+        <br>
+        <label for="time_open">Opening Time:</label>
+        <br>
+        <input type="text" id="time_open" name="time_open" value="{{ canteen.time_open }}">
+        <br>
+        <label for="time_closed">Closing Time:</label>
+        <br>
+        <input type="text" id="time_closed" name="time_closed" value="{{ canteen.time_closed }}">
+        <br>
+        <br>
+        <input type="submit" value="Update">
+    </form>
+    <a rel="Back" href="{{ url_for('show_canteens') }}">Go Back</a>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Canteen</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Add New Canteen</h1>
+        <form method="post">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name"><br>
+            <label for="location">Location:</label><br>
+            <input type="text" id="location" name="location"><br>
+            <label for="time_open">Opening Time:</label><br>
+            <input type="text" id="time_open" name="time_open"><br>
+            <label for="time_closed">Closing Time:</label><br>
+            <input type="text" id="time_closed" name="time_closed"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <a rel="Back" href="{{ url_for('show_canteens') }}">Go Back</a>
+</body>
+</html>
